@@ -1,0 +1,44 @@
+{
+  "name": "users-ms",
+  "version": "1.0.0",
+  "description": "Microserviço que gerencia usuários",
+  "main": "dist/server.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "npx ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc",
+    "start": "npx tsc && node dist/server.js",
+    "typeorm": "typeorm-ts-node-commonjs"
+  },
+  "keywords": [
+    "users",
+    "microservice",
+    "typescript",
+    "node"
+  ],
+  "author": "Ihago Santos",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^5.0.1",
+    "@types/jest": "^29.5.12",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/node": "^22.15.17",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.10",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "reflect-metadata": "^0.2.2",
+    "sqlite3": "^5.1.7",
+    "typeorm": "^0.3.23"
+  }
+}
