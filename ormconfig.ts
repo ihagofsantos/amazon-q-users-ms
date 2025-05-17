@@ -1,14 +1,13 @@
 import { DataSource } from "typeorm";
 import { join } from "path";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export const AppDataSource = new DataSource({
-  type: "postgres", // Tipo do banco de dados (pode ser "mysql", "sqlite", "postgres", etc.)
-  host: "localhost",
-  port: 5432,
-  username: "postgres",
-  password: "postgres",
-  database: "test_database",
-  synchronize: false, // Não recomendado para produção
+  type: "sqlite", // Alterado para sqlite conforme .env
+  database: process.env.DB_DATABASE || "database.sqlite",
+  synchronize: true, // Em desenvolvimento podemos usar true
   logging: true,
   entities: [join(__dirname, "src/entity/**/*.{ts,js}")],
   migrations: [join(__dirname, "src/migration/**/*.{ts,js}")],

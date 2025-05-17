@@ -8,12 +8,14 @@ export class UpdateUserUseCase {
 
     async execute({id, name, email}: UpdateUser.Input): Promise<void> {
         const user = await this.userRepository.getUserById(id);
-        const existingUser = await this.userRepository.getUserByEmail(email);
         
-        if(!user) throw new NotFoundError("user not found");
-
-        if(existingUser && existingUser.id !== id) {
-            throw new ConflictError("Email already exists");
+        if(!user) throw new NotFoundError("User not found");
+        
+        if(email !== user.email) {
+            const existingUser = await this.userRepository.getUserByEmail(email);
+            if(existingUser && existingUser.id !== id) {
+                throw new ConflictError("Email already in use");
+            }
         }
         
         await this.userRepository.updateUser(id, name, email);
